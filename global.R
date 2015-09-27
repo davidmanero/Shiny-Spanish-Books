@@ -3,9 +3,8 @@ library(wordcloud)
 library(memoise)
 
 # The list of valid books
-books <<- list(
-               "El Lazarillo de Tormes" = "lazarillo",
-               "Don Quijote de la Mancha" = "quijote",
+books <<- list("Don Quijote de la Mancha" = "quijote",
+               "El Lazarillo de Tormes" = "lazarillo",            
                "La Celestina" = "celestina")
 
 # Stop Words in Spanish Language

@@ -55,43 +55,26 @@ shinyUI(
                     )
              ),
              tabPanel("Analysis",
-                      fluidPage(
-                        titlePanel("The relationship between variables and miles per gallon (MPG)"),
-                        sidebarLayout(
-                          sidebarPanel(
-                            selectInput("variable", "Variable:",
-                                        c("Number of cylinders" = "cyl",
-                                          "Displacement (cu.in.)" = "disp",
-                                          "Gross horsepower" = "hp",
-                                          "Rear axle ratio" = "drat",
-                                          "Weight (lb/1000)" = "wt",
-                                          "1/4 mile time" = "qsec",
-                                          "V/S" = "vs",
-                                          "Transmission" = "am",
-                                          "Number of forward gears" = "gear",
-                                          "Number of carburetors" = "carb"
-                                        )),
-                            
-                            checkboxInput("outliers", "Show BoxPlot's outliers", FALSE)
-                          ),
-                          
-                          mainPanel(
-                            h3(textOutput("caption")),
-                            
-                            tabsetPanel(type = "tabs", 
-                                        tabPanel("BoxPlot", plotOutput("mpgBoxPlot")),
-                                        tabPanel("Regression model", 
-                                                 plotOutput("mpgPlot"),
-                                                 verbatimTextOutput("fit")
-                                        )
-                            )
-                          )
-                        )
-                      )
+                      h3("Load the entire book"),
+                      helpText("The first thing done is to read the book from a txt file (thanks to Gutenberg Project),",
+                               " this will be the base for the analysis. The name of the book is compared to the list",
+                               " of the books that we have downloaded. In order to not break."),
+                      hr(),
+                      h3("Corpus construction"),
+                      helpText("Then some modifications and preparations are done to the text: ",
+                               " lower any upper case, take punctations, numbers, and some stop words from spanish."),
+                      hr(),
+                      h3("Word Matrix"),
+                      helpText("With the tm library we can do Corpus and transform this list of words in a Matrix. ",
+                               " This MAtrix is necesary for the WordCloud Application."),
+                      hr(),
+                      h3("Word Cloud Plot"),
+                      helpText("The Word Cloud Plot is done using the wordcloud library, with the wordcloud_rep function",
+                               " than plots the information with minimum frequency an the number of words plotted.")
              ),
              tabPanel("SourceCode",
-                      p("part1_devdataprod-shiny"),
-                      a("https://github.com/swhgoon/devdataprod-cp/tree/master/part1_devdataprod-shiny")
+                      p("Shiny Spanish Books"),
+                      a("https://github.com/davidmanero/Shiny-Spanish-Books/")
              )
   )
 )
